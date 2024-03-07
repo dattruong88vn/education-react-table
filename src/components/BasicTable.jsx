@@ -13,8 +13,14 @@ export const BasicTable = () => {
     data,
   });
 
-  const { getTableProps, getTableBodyProps, rows, headerGroups, prepareRow } =
-    tableInsance;
+  const {
+    getTableProps,
+    getTableBodyProps,
+    rows,
+    headerGroups,
+    footerGroups,
+    prepareRow,
+  } = tableInsance;
 
   return (
     <div>
@@ -49,6 +55,21 @@ export const BasicTable = () => {
             );
           })}
         </tbody>
+        <tfoot>
+          {footerGroups.map((footerGroup) => {
+            return (
+              <tr key={footerGroup.id} {...footerGroup.getFooterGroupProps()}>
+                {footerGroup.headers.map((column) => {
+                  return (
+                    <td key={column.id} {...column.getFooterProps()}>
+                      {column.render("Footer")}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tfoot>
       </table>
     </div>
   );

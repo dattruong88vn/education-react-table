@@ -18,7 +18,8 @@
   background-color: #ddd;
 }
 
-#customers th {
+#customers th,
+tfoot td {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
